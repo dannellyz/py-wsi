@@ -26,18 +26,18 @@ from .config import *
 class Turtle(object):
 
     def __init__(self,
-    			 file_dir,
+                 file_dir,
                  wsi_type,
-    			 db_location,
-    			 db_name="",
-    			 storage_type='lmdb',
-    			 xml_dir=False,
-    			 label_map={},
+                 db_location,
+                 db_name="",
+                 storage_type='lmdb',
+                 xml_dir=False,
+                 label_map={},
     			 ):
         """ The py-wsi manager class for manipulating svs and patches. 
             - storage_type  expecting 'lmdb', 'hdf5', disk'
             - file_dir      location of all the image files
-            - wsi_types     type of wsi files stored, can be any supported by openslide
+            - wsi_types     type of wsi files stored, can be any supported by openslide (".svs",".tiff")
             - db_location   path where images will be stored
             - db_name       name of database (name for LMDB; prefix of files for HDF5 and disk)
             - xml_dir       path of XML annoation files, if used
@@ -276,8 +276,8 @@ class Turtle(object):
         if file_name not in self.files:
             print("[py-wsi error]: file not found in directory", self.file_dir)
             return False
-        if file_name[-4:] != ".svs":
-            print("[py-wsi error]: filename should end in .svs extension.")
+        if file_name[-4:] != self.wsi_type:
+            print("[py-wsi error]: filename does not match provided extension.")
             return False
         return True
 
