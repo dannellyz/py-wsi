@@ -276,7 +276,7 @@ class Turtle(object):
         if file_name not in self.files:
             print("[py-wsi error]: file not found in directory", self.file_dir)
             return False
-        if file_name[-4:] != self.wsi_type:
+        if file_name[-5:] != self.wsi_type:
             print("[py-wsi error]: filename does not match provided extension.")
             return False
         return True
